@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
    * Define Global Variables
    *
    */
-  const navBarList = document.querySelector("#navbar__list");
+  const navbarList = document.querySelector("#navbar__list");
   const sections = document.querySelectorAll("section");
 
   /**
@@ -34,11 +34,14 @@ document.addEventListener("DOMContentLoaded", () => {
    */
 
   // build the nav
-  for (let section of sections) {
+  for (let [i, section] of sections.entries()) {
     const menuLink = document.createElement("li");
     menuLink.textContent = section.dataset.nav;
     menuLink.classList.add("menu__link");
-    navBarList.append(menuLink);
+    if (i === 0) {
+      menuLink.classList.add("active");
+    }
+    navbarList.appendChild(menuLink);
   }
 
   // Add class 'active' to section when near top of viewport
@@ -48,6 +51,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (position.top >= 0 && position.bottom <= window.innerHeight) {
         removeActiveElements(sections);
         setActiveElement(section);
+
+        // set active menuLink
+        removeActiveElements(navbarList.children);
+        setActiveElement(document.querySelectorAll(".menu__link")[i]);
       }
     }
   });
@@ -63,6 +70,18 @@ document.addEventListener("DOMContentLoaded", () => {
   // Build menu
 
   // Scroll to section on link click
+  navbarList.addEventListener("click", (event) => {
+    const sectionId = event.target.textContent
+      .split(" ")
+      .join("")
+      .toLowerCase();
+    removeActiveElements(navbarList.children);
+    setActiveElement(event.target);
+    const elementToScroll = document.querySelector(`#${sectionId}`);
+    elementToScroll.scrollIntoView({
+      behavior: "smooth",
+    });
+  });
 
   // Set active element
   function setActiveElement(element) {

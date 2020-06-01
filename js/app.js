@@ -42,6 +42,11 @@ document.addEventListener("DOMContentLoaded", () => {
       menuLink.classList.add("active");
     }
     navbarList.appendChild(menuLink);
+    section.addEventListener("click", () => {
+      document
+        .querySelectorAll(".section__content")
+        [i].classList.toggle("collapsed");
+    });
   }
 
   // Add class 'active' to section when near top of viewport
@@ -95,4 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     return elements;
   }
+
+  // collapse section
 });

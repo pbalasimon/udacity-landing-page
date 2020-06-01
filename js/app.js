@@ -42,6 +42,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Add class 'active' to section when near top of viewport
+  window.addEventListener("scroll", function () {
+    for (let [i, section] of sections.entries()) {
+      var position = section.getBoundingClientRect();
+      if (position.top >= 0 && position.bottom <= window.innerHeight) {
+        removeActiveElements(sections);
+        setActiveElement(section);
+      }
+    }
+  });
 
   // Scroll to anchor ID using scrollTO event
 
@@ -55,5 +64,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Scroll to section on link click
 
-  // Set sections as active
+  // Set active element
+  function setActiveElement(element) {
+    element.classList.add("active");
+  }
+
+  // remove active elements
+  function removeActiveElements(elements) {
+    for (let element of elements) {
+      element.classList.remove("active");
+    }
+    return elements;
+  }
 });

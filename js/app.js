@@ -1,57 +1,59 @@
-/**
- * 
- * Manipulating the DOM exercise.
- * Exercise programmatically builds navigation,
- * scrolls to anchors from navigation,
- * and highlights section in viewport upon scrolling.
- * 
- * Dependencies: None
- * 
- * JS Version: ES2015/ES6
- * 
- * JS Standard: ESlint
- * 
-*/
+document.addEventListener("DOMContentLoaded", () => {
+  /**
+   *
+   * Manipulating the DOM exercise.
+   * Exercise programmatically builds navigation,
+   * scrolls to anchors from navigation,
+   * and highlights section in viewport upon scrolling.
+   *
+   * Dependencies: None
+   *
+   * JS Version: ES2015/ES6
+   *
+   * JS Standard: ESlint
+   *
+   */
 
-/**
- * Define Global Variables
- * 
-*/
+  /**
+   * Define Global Variables
+   *
+   */
+  const navBarList = document.querySelector("#navbar__list");
+  const sections = document.querySelectorAll("section");
 
+  /**
+   * End Global Variables
+   * Start Helper Functions
+   *
+   */
 
-/**
- * End Global Variables
- * Start Helper Functions
- * 
-*/
+  /**
+   * End Helper Functions
+   * Begin Main Functions
+   *
+   */
 
+  // build the nav
+  for (let section of sections) {
+    const menuLink = document.createElement("li");
+    menuLink.textContent = section.dataset.nav;
+    menuLink.classList.add("menu__link");
+    navBarList.append(menuLink);
+  }
 
+  // Add class 'active' to section when near top of viewport
 
-/**
- * End Helper Functions
- * Begin Main Functions
- * 
-*/
+  // Scroll to anchor ID using scrollTO event
 
-// build the nav
+  /**
+   * End Main Functions
+   * Begin Events
+   *
+   */
 
+  // Build menu
 
-// Add class 'active' to section when near top of viewport
+  // Scroll to section on link click
 
-
-// Scroll to anchor ID using scrollTO event
-
-
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
-
-// Build menu 
-
-// Scroll to section on link click
-
-// Set sections as active
-
-
+  // Set sections as active
+});

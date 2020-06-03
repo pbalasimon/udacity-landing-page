@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document
         .querySelectorAll(".section__content")
         [i].classList.toggle("collapsed");
+      document.querySelectorAll("h2")[i].classList.toggle("collapse");
     });
   }
 

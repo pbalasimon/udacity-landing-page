@@ -9,6 +9,7 @@
 */
 
 /* ---- Base Rules ---- */
+@import "fa.css";
 body {
   background: rgb(136, 203, 171);
   background: linear-gradient(
@@ -59,7 +60,6 @@ main {
 
 section {
   position: relative;
-  min-height: 80vh;
 }
 
 /* ---- Module Rules ---- */
@@ -79,7 +79,7 @@ section {
 .navbar__menu .menu__link {
   cursor: pointer;
   display: inline-block;
-  padding: 1em;
+  padding: 1em 0.5em 1em 0.5em;
   font-weight: bold;
   text-decoration: none;
   color: #fff;
@@ -122,6 +122,24 @@ section {
   text-align: left;
 }
 
+h2:nth-of-type(odd)::after {
+  font-family: "Font Awesome 5 Free";
+  content: "\f146";
+  float: right;
+}
+
+h2:nth-of-type(even)::after {
+  font-family: "Font Awesome 5 Free";
+  content: "\f146";
+  float: left;
+}
+
+.landing__container > h2.collapse::after {
+  font-family: "Font Awesome 5 Free";
+  content: "\f0fe";
+  float: right;
+}
+
 .section {
   cursor: pointer;
 }
@@ -140,7 +158,6 @@ section {
 section:nth-of-type(even) .landing__container {
   margin-right: 0;
   margin-left: auto;
-  text-align: right;
 }
 
 /* Background Circles */

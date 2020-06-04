@@ -53,8 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Add class 'active' to section when near top of viewport
   window.addEventListener("scroll", function () {
     for (let [i, section] of sections.entries()) {
-      var position = section.getBoundingClientRect();
-      if (position.top >= 0 && position.bottom <= window.innerHeight) {
+      if (elementInViewport(section)) {
         removeActiveElements(sections);
         setActiveElement(section);
 
@@ -64,6 +63,22 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
+
+  function elementInViewport(element) {
+    var elementInfo = {
+      top: element.offsetTop,
+      height: element.offsetHeight,
+    };
+
+    if (
+      elementInfo.top + elementInfo.height < window.pageYOffset ||
+      elementInfo.top > window.pageYOffset + window.innerHeight
+    ) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   // Scroll to anchor ID using scrollTO event
 
